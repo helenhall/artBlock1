@@ -8,7 +8,9 @@
 import SwiftUI
 import CoreData
 
-
+//class UserPickNote: ObservableObject {
+//    var currentNote: NoteModel
+//}
 
 struct InsideFolderView: View {
     let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
@@ -16,7 +18,9 @@ struct InsideFolderView: View {
     @State var searchString: String = ""
     @State var newNoteName = ""
     @State var showingPopover = false
-    @State var input: String
+    @State var input: FolderModel
+
+//    @State var folderInput:
     
     var body: some View {
         // https://www.youtube.com/watch?v=6eQUnuvz_Gk
@@ -42,15 +46,15 @@ struct InsideFolderView: View {
                                     .frame(alignment:.leading)
                                     .foregroundColor(.black)) {
                             if myNotes.folders.count > 0 {
-                                NoteCell(name:"All on My iPhone")
+                                NoteCell(input: input, name:"All on My iPhone")
                             }
-                            NoteCell(name: "Example 1")
-                            NoteCell(name: "Example 2")
-                            ForEach (myNotes.notes) { note in
-                                NoteCell(name: note.title)
+                            NoteCell(input: input, name: "Example 1")
+                            NoteCell(input: input, name: "Example 2")
+                            ForEach (input.notes) { note in
+                                NoteCell(input: input, name: note.title)
                             }
                             .onDelete(perform: {indexSet in
-                                myNotes.notes.remove(atOffsets: indexSet)
+                                input.notes.remove(atOffsets: indexSet)
                             })
                             //            }
                         }
@@ -59,7 +63,7 @@ struct InsideFolderView: View {
                         
                     }//:LIST
                     .listStyle(InsetGroupedListStyle())
-                    .navigationBarTitle(input)
+                    .navigationBarTitle(input.name)
                     .navigationBarHidden(false)
                     
                     
@@ -86,7 +90,7 @@ struct InsideFolderView: View {
 //                    .navigationBarHidden(true)
 
                 }//:Navigationview
-                .navigationBarTitle("Ideas in \(input) Folder")
+                .navigationBarTitle("Ideas")
 //                .navigationBarHidden(true)
                 
                 
@@ -109,10 +113,13 @@ struct InsideFolderView: View {
 
 
 struct NoteCell: View {
+    @State var input: FolderModel
+//    @ObservedObject var myNotes: MyNotes
+
     var name: String
     var body: some View {
         //destination: FolderView(folderName: name)
-        NavigationLink(destination: NoteView()
+        NavigationLink(destination: NoteView(input: input)
                         .navigationTitle(name)){
         HStack {
             Image(systemName: "doc")
@@ -126,10 +133,12 @@ struct CreateNewNote: View {
     @ObservedObject var myNotes: MyNotes
     @Binding var showingPopover: Bool
     @State var newNoteName = ""
+//    @State var input: FolderModel
     init(_ showingPopover: Binding<Bool>, with myNotes: MyNotes){
         
         self._showingPopover = showingPopover
         self.myNotes = myNotes
+//        self.input = FolderModel(name: "", notes: testNotes)
     }
     
     var body: some View {
@@ -179,4 +188,14 @@ struct InsideFolderView_Previews: PreviewProvider {
             testNotes.folders = testFolders
             return IdeasView(myNotes: testNotes)
         }
+}
+
+func createFolderNote (_folder: FolderModel) {
+    @State var input: FolderModel
+    @ObservedObject var myNotes: MyNotes
+    @State var newNoteName = ""
+
+//    input.notes.append(NoteModel(title: newNoteName))
+    
+    
 }

@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var selection = 1
     //below from youtube for ideas
     @StateObject private var myNotes = MyNotes()
+    @StateObject private var myProjects = MyProjects()
     
     init() {
         UITabBar.appearance().shadowImage = nil
@@ -39,7 +40,7 @@ struct ContentView: View {
                 Text("Ideas")
             }.tag(2)
             NavigationView {
-                ProgressView()
+                ProgressView(myProjects:myProjects)
                     .navigationTitle("")
                     .navigationBarTitleDisplayMode(.inline)
             }
@@ -48,9 +49,10 @@ struct ContentView: View {
                 Text("Progress")
             }.tag(3)
             NavigationView {
-                GalleryView()
+                GalleryView(myProjects:myProjects)
                     .navigationTitle("")
                     .navigationBarTitleDisplayMode(.inline)
+//                galleryview2()
             }
             .tabItem {
                 Image(systemName: "person")

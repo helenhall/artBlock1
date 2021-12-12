@@ -10,13 +10,16 @@ import SwiftUI
 struct NoteView: View {
     
     @State var title = ""
-    @State var noteText = "Idk random text"
+    @State var input: FolderModel
+    @State var noteText = "Example text here"
+//    @ObservedObject var myNotes= MyNotes
+
     var body: some View {
         TextEditor(text: $noteText) //UI Text View
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
-                        print("Done")
+//                        myNotes.$notes.update()
                     }
                 }
             }
@@ -52,7 +55,11 @@ struct TextView: UIViewRepresentable {
     typealias UIViewType = UITextView
 }
 struct NoteView_Previews: PreviewProvider {
+//    @ObservedObject var myNotes: MyNotes
+
+    @State var input: FolderModel
+//    @State var folders: MyNotes.testFolders
     static var previews: some View {
-        NoteView()
+        NoteView(input: FolderModel(name: "test"))
     }
 }

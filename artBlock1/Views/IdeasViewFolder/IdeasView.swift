@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 class UserPick: ObservableObject{
-    @Published var currentFolder: String = "idk"
+    @Published var currentFolder: FolderModel = FolderModel(name: "")
 }
 
 struct IdeasView: View {
@@ -70,11 +70,11 @@ struct IdeasView: View {
                             Spacer()
                             HStack {
                                 Text("")
-//                                NavigationLink(destination: InsideFolderView(myNotes: myNotes)
-//                                                .navigationBarHidden(true)
-//                                                .navigationBarTitle("jj")){
-//                            Image(systemName: "square.and.pencil")
-                           // }
+                                NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: input.currentFolder)
+                                                .navigationBarHidden(true)
+                                                .navigationBarTitle("jj")){
+                            Image(systemName: "square.and.pencil")
+                            }
                             }
                         }
                     }//:TOOLBAR
@@ -100,8 +100,7 @@ struct FolderCell: View {
     
     var body: some View {
         //destination: FolderView(folderName: name)
-//        self.input.currentFolder = name
-        NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: name)
+        NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: input.currentFolder)
                         .navigationTitle("jfhjjjj")
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(false)
@@ -112,7 +111,7 @@ struct FolderCell: View {
             Text(name)
         }
         }.simultaneousGesture(TapGesture().onEnded{
-            self.input.currentFolder = name
+            input.currentFolder = FolderModel(name: name)
         })
     }
 }

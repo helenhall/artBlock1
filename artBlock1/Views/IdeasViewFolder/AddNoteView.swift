@@ -102,12 +102,12 @@ struct CreateNewIdea: View {
     @Binding var showingPopover: Bool
     @State var newNoteName = ""
     @State var textFieldText: String = ""
-    @EnvironmentObject var listViewModel: ListViewModel
+//    @EnvironmentObject var listViewModel: ListViewModel
     @StateObject var vm = CoreDataViewModel()
     init(_ showingPopover: Binding<Bool>){
         
         self._showingPopover = showingPopover
- 
+//        self.myNotes = myNotes
     }
     
     var body: some View {

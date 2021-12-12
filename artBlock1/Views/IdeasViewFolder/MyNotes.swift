@@ -18,7 +18,7 @@ class MyNotes: ObservableObject {
 struct FolderModel: Identifiable{
     var name: String
     var id = UUID()
-//    var notes: [NoteModel] = testNotes
+    var notes: [NoteModel] = testNotes
 }
 struct NoteModel: Identifiable {
     var id = UUID()
@@ -26,11 +26,12 @@ struct NoteModel: Identifiable {
     var noteText: String = ""
 }
 var testFolders = [
-    FolderModel(name: "Folder1"),
-    FolderModel(name: "Folder2")
+    FolderModel(name: "Folder1", notes: [NoteModel(title:"Note1", noteText: "bbfhbj")]),
+    FolderModel(name: "Folder2", notes: [NoteModel(title:"Note1", noteText: "bbfhbj")])
 ]
 
 var testNotes = [
     NoteModel(title: "Notes 1", noteText: "Example text here"),
     NoteModel(title: "Notes 2", noteText: "Example text here")
 ]
+
