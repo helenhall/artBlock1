@@ -24,9 +24,14 @@
 		24515BD927586851008A2639 /* NavViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24515BD827586851008A2639 /* NavViewModifier.swift */; };
 		24515BDB2759A43A008A2639 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24515BDA2759A43A008A2639 /* NavigationBarView.swift */; };
 		24515BDD2759A5A7008A2639 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24515BDC2759A5A7008A2639 /* LogoView.swift */; };
+		249F08EA27626A2D00F57BF6 /* FolderContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 249F08E827626A2D00F57BF6 /* FolderContainer.xcdatamodeld */; };
+		24AA311D276505F800412C90 /* InsideFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA311C276505F800412C90 /* InsideFolderView.swift */; };
 		24BA4C1E275ACE3000434E8A /* MyNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA4C1D275ACE3000434E8A /* MyNotes.swift */; };
 		24BA4C20275C0F4A00434E8A /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA4C1F275C0F4A00434E8A /* FolderView.swift */; };
 		24BA4C22275C11AA00434E8A /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA4C21275C11AA00434E8A /* NoteView.swift */; };
+		24BA4C28275C8EA800434E8A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA4C27275C8EA800434E8A /* ListViewModel.swift */; };
+		24BA4C2A275C93E200434E8A /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BA4C29275C93E200434E8A /* AddNoteView.swift */; };
+		24D276682765A92B00E93312 /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D276672765A92B00E93312 /* HomeView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,9 +72,14 @@
 		24515BD827586851008A2639 /* NavViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewModifier.swift; sourceTree = "<group>"; };
 		24515BDA2759A43A008A2639 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		24515BDC2759A5A7008A2639 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		249F08E927626A2D00F57BF6 /* FolderContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FolderContainer.xcdatamodel; sourceTree = "<group>"; };
+		24AA311C276505F800412C90 /* InsideFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideFolderView.swift; sourceTree = "<group>"; };
 		24BA4C1D275ACE3000434E8A /* MyNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotes.swift; sourceTree = "<group>"; };
 		24BA4C1F275C0F4A00434E8A /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		24BA4C21275C11AA00434E8A /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		24BA4C27275C8EA800434E8A /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		24BA4C29275C93E200434E8A /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
+		24D276672765A92B00E93312 /* HomeView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +110,6 @@
 		24403A3D2753E9520000A013 = {
 			isa = PBXGroup;
 			children = (
-				24BA4C1F275C0F4A00434E8A /* FolderView.swift */,
-				24BA4C21275C11AA00434E8A /* NoteView.swift */,
-				24515BDA2759A43A008A2639 /* NavigationBarView.swift */,
-				24515BDC2759A5A7008A2639 /* LogoView.swift */,
 				24403A482753E9520000A013 /* artBlock1 */,
 				24403A5E2753E9550000A013 /* artBlock1Tests */,
 				24403A682753E9550000A013 /* artBlock1UITests */,
@@ -125,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				24403A492753E9520000A013 /* artBlock1App.swift */,
+				24BA4C25275C8E6100434E8A /* ViewModels */,
 				24515BD527574B47008A2639 /* Views */,
 				24403A4D2753E9550000A013 /* Assets.xcassets */,
 				24403A522753E9550000A013 /* Persistence.swift */,
@@ -162,16 +169,40 @@
 		24515BD527574B47008A2639 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				24515BDA2759A43A008A2639 /* NavigationBarView.swift */,
+				24515BDC2759A5A7008A2639 /* LogoView.swift */,
 				24403A4B2753E9520000A013 /* ContentView.swift */,
 				24515BD827586851008A2639 /* NavViewModifier.swift */,
 				24515BD627574C6F008A2639 /* OpenView.swift */,
 				24515BD327574B2B008A2639 /* GalleryView.swift */,
 				24515BD127574ADD008A2639 /* ProgressView.swift */,
-				24515BCF27574A9C008A2639 /* IdeasView.swift */,
-				24BA4C1D275ACE3000434E8A /* MyNotes.swift */,
+				24BA4C26275C8E7E00434E8A /* IdeasViewFolder */,
 				24515BCD275749A7008A2639 /* HomeView.swift */,
+				24D276672765A92B00E93312 /* HomeView2.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		24BA4C25275C8E6100434E8A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				24BA4C27275C8EA800434E8A /* ListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		24BA4C26275C8E7E00434E8A /* IdeasViewFolder */ = {
+			isa = PBXGroup;
+			children = (
+				24BA4C1D275ACE3000434E8A /* MyNotes.swift */,
+				24BA4C1F275C0F4A00434E8A /* FolderView.swift */,
+				249F08E827626A2D00F57BF6 /* FolderContainer.xcdatamodeld */,
+				24BA4C21275C11AA00434E8A /* NoteView.swift */,
+				24515BCF27574A9C008A2639 /* IdeasView.swift */,
+				24AA311C276505F800412C90 /* InsideFolderView.swift */,
+				24BA4C29275C93E200434E8A /* AddNoteView.swift */,
+			);
+			path = IdeasViewFolder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,12 +335,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AA311D276505F800412C90 /* InsideFolderView.swift in Sources */,
 				24403A532753E9550000A013 /* Persistence.swift in Sources */,
 				24515BDD2759A5A7008A2639 /* LogoView.swift in Sources */,
 				24515BD727574C6F008A2639 /* OpenView.swift in Sources */,
+				24D276682765A92B00E93312 /* HomeView2.swift in Sources */,
 				24515BDB2759A43A008A2639 /* NavigationBarView.swift in Sources */,
+				24BA4C2A275C93E200434E8A /* AddNoteView.swift in Sources */,
 				24403A562753E9550000A013 /* artBlock1.xcdatamodeld in Sources */,
 				24403A4C2753E9520000A013 /* ContentView.swift in Sources */,
+				249F08EA27626A2D00F57BF6 /* FolderContainer.xcdatamodeld in Sources */,
+				24BA4C28275C8EA800434E8A /* ListViewModel.swift in Sources */,
 				24BA4C1E275ACE3000434E8A /* MyNotes.swift in Sources */,
 				24515BCE275749A7008A2639 /* HomeView.swift in Sources */,
 				24BA4C20275C0F4A00434E8A /* FolderView.swift in Sources */,
@@ -674,6 +710,16 @@
 			);
 			currentVersion = 24403A552753E9550000A013 /* artBlock1.xcdatamodel */;
 			path = artBlock1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		249F08E827626A2D00F57BF6 /* FolderContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				249F08E927626A2D00F57BF6 /* FolderContainer.xcdatamodel */,
+			);
+			currentVersion = 249F08E927626A2D00F57BF6 /* FolderContainer.xcdatamodel */;
+			path = FolderContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

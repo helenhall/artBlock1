@@ -25,18 +25,15 @@ struct ContentView: View {
         
         TabView (selection:$selection){
             
-            HomeView()
-            .tabItem {
+                HomeView2()
+                .tabItem {
                 Image(systemName: "house")
                 Text("Home")
             }
             .tag(1)
-            NavigationView {
                 IdeasView(myNotes: myNotes)
-                    .navigationTitle("")
-                    .navigationBarTitleDisplayMode(.inline)
-                
-            }
+             
+            
             .tabItem {
                 Image(systemName: "lightbulb")
                 Text("Ideas")

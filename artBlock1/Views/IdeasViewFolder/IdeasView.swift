@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import CoreData
+
+class UserPick: ObservableObject{
+    @Published var currentFolder: String = "idk"
+}
 
 struct IdeasView: View {
+    @ObservedObject var input = UserPick()
     let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
     @ObservedObject var myNotes: MyNotes
     @State var searchString: String = ""
     @State var newFolderName = ""
     @State var showingPopover = false
+    
     var body: some View {
         // https://www.youtube.com/watch?v=6eQUnuvz_Gk
         ZStack(){
@@ -33,11 +40,11 @@ struct IdeasView: View {
                                     .frame(alignment:.leading)
                                     .foregroundColor(.black)) {
                             if myNotes.folders.count > 0 {
-                                FolderCell(name:"All on My iPhone")
+                                FolderCell(name:"All on My iPhone", myNotes: myNotes)
                             }
-                            FolderCell(name: "Notes")
+                            FolderCell(name: "Notes", myNotes: myNotes)
                             ForEach (myNotes.folders) { folder in
-                                FolderCell(name: folder.name)
+                                FolderCell(name: folder.name, myNotes: myNotes)
                             }
                             .onDelete(perform: {indexSet in
                                 myNotes.folders.remove(atOffsets: indexSet)
@@ -46,20 +53,29 @@ struct IdeasView: View {
                         }
                                     .textCase(nil)
                         
+                        
                     }//:LIST
                     .listStyle(InsetGroupedListStyle())
-                    .navigationTitle("Folders")
+                    .navigationTitle("Idea Folders")
                     
                     .toolbar {
-                        ToolbarItemGroup(placement:.navigationBarTrailing) {
-                           EditButton()
-                        }
+//                        ToolbarItemGroup(placement:.navigationBarTrailing) {
+//                           EditButton()
+//                        }
                         ToolbarItemGroup(placement: .bottomBar) {
                             Image(systemName:"folder.badge.plus" )
                                 .onTapGesture {
                                     showingPopover.toggle()
                                 }
-                            Image(systemName: "square.and.pencil")
+                            Spacer()
+                            HStack {
+                                Text("")
+//                                NavigationLink(destination: InsideFolderView(myNotes: myNotes)
+//                                                .navigationBarHidden(true)
+//                                                .navigationBarTitle("jj")){
+//                            Image(systemName: "square.and.pencil")
+                           // }
+                            }
                         }
                     }//:TOOLBAR
                 }//:Navigationview
@@ -79,13 +95,25 @@ struct IdeasView: View {
 
 struct FolderCell: View {
     var name: String
+    @ObservedObject var myNotes: MyNotes
+    @ObservedObject var input = UserPick()
+    
     var body: some View {
-        NavigationLink(destination: FolderView(folderName: name)){
+        //destination: FolderView(folderName: name)
+//        self.input.currentFolder = name
+        NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: name)
+                        .navigationTitle("jfhjjjj")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarHidden(false)
+//                        .navigationBarBackButtonHidden(false)
+                        ){
         HStack {
             Image(systemName: "folder")
             Text(name)
         }
-    }
+        }.simultaneousGesture(TapGesture().onEnded{
+            self.input.currentFolder = name
+        })
     }
 }
 
@@ -124,7 +152,7 @@ struct CreateNewFolder: View {
                                 .frame(maxWidth:.infinity)
                         }
                         Button(action: {
-                            myNotes.folders.append(Folder(name: newFolderName))
+                            myNotes.folders.append(FolderModel(name: newFolderName))
                             showingPopover.toggle()
                         }) {
                             Text("Save")
