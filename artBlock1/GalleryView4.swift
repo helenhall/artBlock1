@@ -1,60 +1,57 @@
 ////
-////  InsideFolderView.swift
+////  GalleryView4.swift
 ////  artBlock1
 ////
-////  Created by Helen Hall on 12/11/21.
+////  Created by Helen Hall on 12/12/21.
+////
+////
+////  IdeasView.swift
+////  artBlock1
+////
+////  Created by Helen Hall on 12/1/21.
 ////
 //
 //import SwiftUI
 //import CoreData
-//
-////class UserPickNote: ObservableObject {
-////    var currentNote: NoteModel
+////
+////class UserPick: ObservableObject{
+////    @Published var currentFolder: FolderModel = FolderModel(name: "")
 ////}
 //
-//struct InsideFolderView: View {
+//struct GalleryView4: View {
+////    @ObservedObject var input = UserPick()
 //    let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
-//    @ObservedObject var myNotes: MyNotes
+//    @ObservedObject var myProjects: MyProjects
 //    @State var searchString: String = ""
-//    @State var newNoteName = ""
+//    @State var newPostName = ""
 //    @State var showingPopover = false
-//    @State var input: FolderModel
-//
-////    @State var folderInput:
 //    
 //    var body: some View {
 //        // https://www.youtube.com/watch?v=6eQUnuvz_Gk
-//        
 //        ZStack(){
 //            VStack(spacing:0){
-////                NavigationBarView()
-////                    .padding(.horizontal, 15)
-////                    .padding(.bottom)
-////                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-////                    .background(exampleColor)
-////                    .shadow(color:Color.black.opacity(0.05), radius: 5, x:0, y:5)
+//                NavigationBarView()
+//                    .padding(.horizontal, 15)
+//                    .padding(.bottom)
+//                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+//                    .background(exampleColor)
+//                    .shadow(color:Color.black.opacity(0.05), radius: 5, x:0, y:5)
 //                NavigationView{
-//                    
-//
-//                        
 //                    List {
-//                        TextField("Search", text: $searchString)
+//                        
 //                        Section(header:
 //                                    Text("On My iPhone")
 //                                    .font(.title3)
 //                                    .fontWeight(.bold)
 //                                    .frame(alignment:.leading)
 //                                    .foregroundColor(.black)) {
-//                            if myNotes.folders.count > 0 {
-//                                NoteCell(input: input, myNotes: myNotes, name:"All on My iPhone")
-//                            }
-//                            NoteCell(input: input, myNotes: myNotes, name: "Example 1")
-//                            NoteCell(input: input, myNotes: myNotes, name: "Example 2")
-//                            ForEach (input.notes) { note in
-//                                NoteCell(input: input, myNotes: myNotes, name: note.title)
+//                            
+//                            PostCell(title: "Notes", myProjects: myProjects)
+//                            ForEach (myProjects.galleryPosts) { post in
+//                                PostCell(title: post.title, myProjects: myProjects)
 //                            }
 //                            .onDelete(perform: {indexSet in
-//                                input.notes.remove(atOffsets: indexSet)
+//                                myProjects.galleryPosts.remove(atOffsets: indexSet)
 //                            })
 //                            //            }
 //                        }
@@ -63,83 +60,74 @@
 //                        
 //                    }//:LIST
 //                    .listStyle(InsetGroupedListStyle())
-//                    .navigationBarTitle(input.name)
-//                    .navigationBarHidden(false)
-//                    
+//                    .navigationTitle("Gallery")
 //                    
 //                    .toolbar {
 ////                        ToolbarItemGroup(placement:.navigationBarTrailing) {
 ////                           EditButton()
 ////                        }
 //                        ToolbarItemGroup(placement: .bottomBar) {
-//                            Image(systemName:"doc.badge.plus" )
+//                            Image(systemName:"folder.badge.plus" )
 //                                .onTapGesture {
 //                                    showingPopover.toggle()
 //                                }
 //                            Spacer()
 //                            HStack {
 //                                Text("")
-//                                NavigationLink(destination: AddNoteView(name: "Random")
-//                                                ){
-//                            Image(systemName: "square.and.pencil")
-//                            }
+////                                NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: input.currentFolder)
+////                                                .navigationBarHidden(true)
+////                                                .navigationBarTitle("jj")){
+////                            Image(systemName: "square.and.pencil")
+////                            }
 //                            }
 //                        }
 //                    }//:TOOLBAR
-////                    .navigationBarTitle("hhh")
-////                    .navigationBarHidden(true)
-//
 //                }//:Navigationview
-//                .navigationBarTitle("Ideas")
-//                
-////                .navigationBarHidden(true)
-//                
-//                
 //            }//:VStack
-//            
 //            if showingPopover {
-//                CreateNewNote($showingPopover, with: myNotes)//:geo
+//                CreateNewPost($showingPopover, with: myProjects)//:geo
 //            }//:end if statement
-//                
+//            
 //            
 //        }//:ZStack
 //        .ignoresSafeArea(.all, edges: .top)
-////        .navigationBarHidden(true)
 //        
 //    }//:BODY
-//        
-//    
 //}
 //
 //
 //
-//struct NoteCell: View {
-//    @State var input: FolderModel
-//    @ObservedObject var myNotes: MyNotes
-//
-//    var name: String
+//struct PostCell: View {
+//    var title: String
+//    @ObservedObject var myProjects: MyProjects
+////    @ObservedObject var input = UserPick()
+//    
 //    var body: some View {
 //        //destination: FolderView(folderName: name)
-////        NavigationLink(destination: NoteView(input: input, name: name, myNotes:myNotes, currentNote: NoteModel(title: "dd"))
-//                        .navigationTitle(name)){
+//        NavigationLink(destination: CircleNumberView(color: .red, number: 1, name: title, material: "idk", size: "idk", date: "idk")
+//                        .navigationTitle("jfhjjjj")
+//                        .navigationBarTitleDisplayMode(.inline)
+//                        .navigationBarHidden(false)
+////                        .navigationBarBackButtonHidden(false)
+//                        ){
 //        HStack {
-//            Image(systemName: "doc")
-//            Text(name)
+//            Image(systemName: "pic")
+//            Text(title)
 //        }
-//    }
+//        }.simultaneousGesture(TapGesture().onEnded{
+////            input.currentFolder = FolderModel(name: name)
+//        })
 //    }
 //}
 //
-//struct CreateNewNote: View {
-//    @ObservedObject var myNotes: MyNotes
+//struct CreateNewPost: View {
+//    @ObservedObject var myProjects: MyProjects
 //    @Binding var showingPopover: Bool
-//    @State var newNoteName = ""
-////    @State var input: FolderModel
-//    init(_ showingPopover: Binding<Bool>, with myNotes: MyNotes){
+//    @State var newPostName = ""
+//    init(_ showingPopover: Binding<Bool>, with myProjects: MyProjects){
 //        
 //        self._showingPopover = showingPopover
-//        self.myNotes = myNotes
-////        self.input = FolderModel(name: "", notes: testNotes)
+//        self.myProjects = myProjects
 //    }
 //    
 //    var body: some View {
@@ -149,12 +137,12 @@
 //                    .fill(Color(.systemGray4))
 //                    .frame(width:geo.size.width * 0.70, height: geo.size.width * 0.40, alignment:.center)
 //                VStack{
-//                    Text("New idea")
+//                    Text("New Project")
 //                        .font(.headline)
-//                    Text("Enter a name for this idea")
+//                    Text("Enter a name for this folder")
 //                        .font(.subheadline)
 //                    Spacer()
-//                    TextField("Name",text:$newNoteName)
+//                    TextField("Name",text:$newPostName)
 //                        .frame(width:200, height:10)
 //                        .padding()
 //                        .background(Color(.white))
@@ -167,7 +155,7 @@
 //                                .frame(maxWidth:.infinity)
 //                        }
 //                        Button(action: {
-//                            myNotes.notes.append(NoteModel(title: newNoteName))
+//                            myProjects.galleryPosts.append(GalleryPostModel(title: newPostName, image:UIImage(imageLiteralResourceName: "sour")))
 //                            showingPopover.toggle()
 //                        }) {
 //                            Text("Save")
@@ -183,20 +171,10 @@
 //    }
 //}
 //
-//struct InsideFolderView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            let testNotes = MyNotes()
-//            testNotes.folders = testFolders
-//            return IdeasView(myNotes: testNotes)
-//        }
-//}
-//
-//func createFolderNote (_folder: FolderModel) {
-//    @State var input: FolderModel
-//    @ObservedObject var myNotes: MyNotes
-//    @State var newNoteName = ""
-//
-////    input.notes.append(NoteModel(title: newNoteName))
-//    
-//    
-//}
+////struct IdeasView_Previews: PreviewProvider {
+////        static var previews: some View {
+////            let testNotes = MyNotes()
+////            testNotes.folders = testFolders
+////            return IdeasView(myNotes: testNotes)
+////        }
+////}

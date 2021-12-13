@@ -26,7 +26,7 @@ struct ContentView: View {
         
         TabView (selection:$selection){
             
-                HomeView2()
+            HomeView2(myNotes:myNotes)
                 .tabItem {
                 Image(systemName: "house")
                 Text("Home")
@@ -49,10 +49,10 @@ struct ContentView: View {
                 Text("Progress")
             }.tag(3)
             NavigationView {
-                GalleryView(myProjects:myProjects)
+                GalleryView3(myProjects:myProjects)
                     .navigationTitle("")
                     .navigationBarTitleDisplayMode(.inline)
-//                galleryview2()
+//                
             }
             .tabItem {
                 Image(systemName: "person")

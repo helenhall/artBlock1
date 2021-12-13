@@ -9,16 +9,16 @@ import SwiftUI
 
 struct HomeView2: View {
     let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
+    @ObservedObject var myNotes: MyNotes
     
     
     //    set up styling for nav bar
-    init() {
-    }
+//    init() {
+//    }
     
     var body: some View {
 
         ZStack{
-//
             VStack(spacing:0){
                 NavigationBarView()
                     .padding(.horizontal, 15)
@@ -36,19 +36,70 @@ struct HomeView2: View {
                         ScrollView(.horizontal){
                             ZStack{
                                 HStack(spacing:60){
-                                Image(systemName: "doc.text")
-                                    .resizable()
-                                    .frame(width:85, height: 110)
-                                    .aspectRatio(contentMode: .fit)
-                                Image(systemName: "doc.text")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                Image(systemName: "doc.text")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                    
+                                    NavigationLink(
+                                        destination: IdeasView2(projectName: "Project 1")
+                                            .navigationBarTitle("Project 1")
+                                            .navigationBarTitleDisplayMode(.inline)
+                                            .navigationBarHidden(false)//put view definition//put view definition
+                                        ,
+                                        label: {
+                                            VStack{
+                                            Image(systemName: "doc.text")
+                                                .resizable()
+                                                .frame(width:85, height: 110)
+                                                .aspectRatio(contentMode: .fit)
+                                            Text("Project 1")
+                                                    .font(.title)
+                                            }
+
+                                    })
+                                        .navigationTitle("Home")
+                                        .foregroundColor(.white)
+                                        .navigationBarHidden(false)
+                                    NavigationLink(
+                                        destination: IdeasView2(projectName: "Project 2")
+                                            .navigationBarTitle("Project 2")
+                                            .navigationBarTitleDisplayMode(.inline)
+                                            .navigationBarHidden(false)//put view definition
+                                        ,
+                                        label: {
+                                            VStack{
+                                            Image(systemName: "doc.text")
+                                                .resizable()
+                                                .frame(width:85, height: 110)
+                                                .aspectRatio(contentMode: .fit)
+                                            Text("Project 2")
+                                                    .font(.title)
+                                            }
+
+                                    })
+                                        .navigationTitle("Home")
+                                        .foregroundColor(.white)
+                                        .navigationBarHidden(false)
+                                    NavigationLink(
+                                        destination: IdeasView2(projectName: "Miscellaneous")
+                                            .navigationBarTitle("Miscellaneous")
+                                            .navigationBarTitleDisplayMode(.inline)
+                                            .navigationBarHidden(false)//put view definition//put view definition
+                                        ,
+                                        label: {
+                                            VStack{
+                                            Image(systemName: "doc.text")
+                                                .resizable()
+                                                .frame(width:85, height: 110)
+                                                .aspectRatio(contentMode: .fit)
+                                            Text("Miscellaneous")
+                                                    .font(.title)
+                                            }
+                                    })
+                                        .navigationTitle("Home")
+                                        .foregroundColor(.white)
+                                        .navigationBarHidden(false)
+                               
                                     
                             }//:Hstack
-                                .padding(40)
+                                .padding(30)
 //                                .background(.yellow)
 
 //
@@ -66,18 +117,61 @@ struct HomeView2: View {
                             ScrollView(.horizontal) {
                                 ZStack{
                                     HStack(spacing:60){
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .frame(width:85, height: 110)
-                                            .aspectRatio(contentMode: .fit)
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
+                                        NavigationLink(
+                                            destination: AddNoteView(name: "Monster Mash")//put view definition
+                                                .navigationTitle("Monster Mash")
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("Monster Mash")
+                                                        .resizable()
+                                                        .frame(width:100, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Monster Mash")
+                                                        .font(.title)
+                                                }
+                                        })
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
+                                        NavigationLink(
+                                            destination: AddNoteView(name: "Conehead")
+                                                .navigationTitle("Conehead")//put view definition
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("Conehead")
+                                                        .resizable()
+                                                        .frame(width:100, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Conehead")
+                                                        .font(.title)
+                                                }
+                                        })
+                                        
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
+                                        NavigationLink(
+                                            destination: AddNoteView(name: "Croissant")
+                                                .navigationTitle("Croissant")//put view definition
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("Croissant")
+                                                        .resizable()
+                                                        .frame(width:140, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Croissant")
+                                                        .font(.title)
+                                                }
+                                        })
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
+
                                     }//:HStack
-                                    .padding(40)
+                                    .padding(30)
                                     
                                     
                                 }//:Z2
@@ -92,18 +186,62 @@ struct HomeView2: View {
                             ScrollView(.horizontal) {
                                 ZStack{
                                     HStack(spacing:60){
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .frame(width:85, height: 110)
-                                            .aspectRatio(contentMode: .fit)
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                        Image(systemName: "doc.text")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
+                                        NavigationLink(
+                                            destination: CircleNumberView(color: .blue, number: 2, name: "Sour", material: "Acrylic paint on canvas", size: "24 x 24", date: "October 12th, 2021")
+                                                .navigationTitle("Sour")
+                                                .navigationBarTitleDisplayMode(.large)
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("Sour")
+                                                        .resizable()
+                                                        .frame(width:140, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Sour")
+                                                        .font(.title)
+                                                }
+                                        })
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
+                                        NavigationLink(
+                                            destination: CircleNumberView(color: .blue, number: 2, name: "apple", material: "Oil paint on canvas", size: "5 x 5", date: "November 1st, 2021")
+                                                .navigationTitle("Apple")
+                                                .navigationBarTitleDisplayMode(.large)
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("apple")
+                                                        .resizable()
+                                                        .frame(width:140, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Apple")
+                                                        .font(.title)
+                                                }
+                                        })
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
+                                        NavigationLink(
+                                            destination: CircleNumberView(color: .blue, number: 2, name: "umami", material: "Acrylic paint on canvas", size: "24 x 24", date: "May 1st, 2020")
+                                                .navigationTitle("Umami")
+                                                .navigationBarTitleDisplayMode(.large)
+                                            ,
+                                            label: {
+                                                VStack{
+                                                    Image("umami")
+                                                        .resizable()
+                                                        .frame(width:140, height: 140)
+                                                        .aspectRatio(contentMode: .fit)
+                                                Text("Umami")
+                                                        .font(.title)
+                                                }
+                                        })
+                                            .navigationTitle("Home")
+                                            .foregroundColor(.white)
+                                            .navigationBarHidden(false)
                                     }//:HStack
-                                    .padding(40)
+                                    .padding(30)
                                     
                                     
                                 }//:Z2
@@ -132,8 +270,9 @@ struct HomeView2: View {
     }//:end of body
 }
 
-struct HomeView2_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView2()
-    }
-}
+//struct HomeView2_Previews: PreviewProvider {
+//    @ObservedObject var myNotes: MyNotes
+//    static var previews: some View {
+//        HomeView2(myNotes: [MyNotes])
+//    }
+//}

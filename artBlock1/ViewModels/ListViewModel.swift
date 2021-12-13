@@ -18,8 +18,8 @@ class ListViewModel: ObservableObject {
     
     func getNotes() {
         let newNotes = [
-            NoteModel(title: "Notes 1"),
-            NoteModel(title: "Notes 2")
+            NoteModel(title: "Example idea: Sketch of dog"),
+            NoteModel(title: "Example idea: Watercolor?")
         ]
         notes.append(contentsOf: newNotes)
     }

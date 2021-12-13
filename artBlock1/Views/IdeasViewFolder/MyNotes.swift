@@ -26,8 +26,8 @@ struct NoteModel: Identifiable {
     var noteText: String = ""
 }
 var testFolders = [
-    FolderModel(name: "Folder1", notes: [NoteModel(title:"Note1", noteText: "bbfhbj")]),
-    FolderModel(name: "Folder2", notes: [NoteModel(title:"Note1", noteText: "bbfhbj")])
+    FolderModel(name: "Folder1", notes: [NoteModel(title:"Note1", noteText: "")]),
+    FolderModel(name: "Folder2", notes: [NoteModel(title:"Note1", noteText: "")])
 ]
 
 var testNotes = [

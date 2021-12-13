@@ -12,6 +12,7 @@ import SwiftUI
 class MyProjects: ObservableObject {
     @Published var projects = [ProjectModel]()
     @Published var posts = [PostModel]()
+    @Published var galleryPosts = [GalleryPostModel]()
 }
 
 struct ProjectModel: Identifiable{
@@ -29,4 +30,10 @@ var testProjects = [
     ProjectModel(name: "Conehead"),
     ProjectModel(name: "Conehead 2")
 ]
+
+struct GalleryPostModel: Identifiable {
+    var title: String
+    var id = UUID()
+    var image: UIImage
+}
 

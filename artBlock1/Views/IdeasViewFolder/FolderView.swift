@@ -16,14 +16,7 @@ class CoreDataViewModel: ObservableObject {
     @Published var savedEntities: [NoteEntity] = []
     @State private var isActive = false
     //https://developer.apple.com/forums/thread/665369
-//    @FetchRequest(
-//      entity: NoteEntity.entity(),
-//      // 3
-//      sortDescriptors: [
-//        NSSortDescriptor(keyPath: \NoteEntity.name, ascending: true)
-//      ]
-//    // 4
-//    ) var notes: FetchedResults<NoteEntity>
+//
     init() {
         container = NSPersistentContainer(name: "FolderContainer")
         container.loadPersistentStores{ (description, error) in
@@ -98,11 +91,11 @@ struct FolderView: View {
         .toolbar{
             ToolbarItemGroup(placement: .bottomBar) {
                 Text("\(listViewModel.notes.count) " + "Note:")
-                NavigationLink(destination: AddNoteView()
-                                .navigationTitle("")
-                                .navigationBarHidden(true)){
-            Image(systemName: "square.and.pencil")
-            }
+//                NavigationLink(destination: AddNoteView()
+//                                .navigationTitle("")
+//                                .navigationBarHidden(true)){
+//            Image(systemName: "square.and.pencil")
+//            }
             }//:toolbaritemgroup
         }//:toolbar
     }

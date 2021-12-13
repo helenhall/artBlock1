@@ -11,6 +11,7 @@ struct ProgressView: View {
     @ObservedObject var input = UserPick()
     let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
     @ObservedObject var myProjects: MyProjects
+    var name = ""
     
     var body: some View {
         ZStack{
@@ -23,75 +24,109 @@ struct ProgressView: View {
                 .shadow(color:Color.black.opacity(0.05), radius: 5, x:0, y:5)
             NavigationView{
                 ScrollView{
-                    
-                    Button(action:{
-                        print("hi")
-                    }){
-                        ZStack(alignment: .center) {
-                                    Color.red
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    NavigationLink(
+                        destination: AddNoteView(name: "Monster Mash")
+                            .navigationTitle("Monster Mash")
+                        ,
+                        label: {
+                            ZStack(alignment: .center) {
+                                        Color.red
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                                    VStack(alignment: .center) {
-                                        Text("Project 1")
-                                            .font(.title)
-                                            .padding()
-            
-                                        Image(systemName: "doc")
-                                            .resizable()
-                                            .frame(width:85, height: 110)
-                                            .aspectRatio(contentMode: .fit)
-                                            .padding()
+                                        VStack(alignment: .center) {
+                                        
+                                            Image("Monster Mash")
+                                                .resizable()
+                                                .frame(width:125, height: 170)
+                                                .aspectRatio(contentMode: .fit)
+                                                .padding()
+                                                
+                                            
+                                            Text("Monster Mash")
+                                                .font(.title)
+                                                
+                                                .padding(.init(top: 0, leading: 10, bottom: 20, trailing: 0))
+                
+                                        }
                                     }
-                                }
-                        .padding(20)
-                    }
-                    .foregroundColor(.white)
-                    
-                    Button(action:{
-                        print("hi")
-                    }){
-                        ZStack(alignment: .center) {
-                                    Color.blue
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding(20)
 
-                                    VStack(alignment: .center) {
-                                        Text("Project 2")
-                                            .font(.title)
-                                            .padding()
-            
-                                        Image(systemName: "doc")
-                                            .resizable()
-                                            .frame(width:85, height: 110)
-                                            .aspectRatio(contentMode: .fit)
-                                            .padding()
-                                    }
-                                }
-                        .padding(20)
-                    }
-                    .foregroundColor(.white)
-                    
-                    Button(action:{
-                        print("hi")
-                    }){
-                        ZStack(alignment: .center) {
-                                    Color.green
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    })
+                        .foregroundColor(.white)
+                    NavigationLink(
+                        destination: AddNoteView(name: "Conehead")
+                            .navigationTitle("Conehead")
+                        ,
+                        label: {
+                            ZStack(alignment: .center) {
+                                        Color.blue
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                                    VStack(alignment: .center) {
-                                        Text("Project 3")
-                                            .font(.title)
-                                            .padding()
-            
-                                        Image(systemName: "doc")
-                                            .resizable()
-                                            .frame(width:85, height: 110)
-                                            .aspectRatio(contentMode: .fit)
-                                            .padding()
+                                        VStack(alignment: .center) {
+                                            Image("Conehead")
+                                                .resizable()
+                                                .frame(width:125, height: 170)
+                                                .aspectRatio(contentMode: .fit)
+                                                .padding()
+                                                
+                                            
+                                            Text("Conehead")
+                                                .font(.title)
+                                                
+                                                .padding(.init(top: 0, leading: 10, bottom: 20, trailing: 0))
+                                        }
                                     }
-                                }
-                        .padding(20)
+                            .padding(20)
+
+                    })
+                        .foregroundColor(.white)
+                    
+                    NavigationLink(
+                        destination: AddNoteView(name: "Croissant")
+                            .navigationTitle("Croissant")
+                            .padding(10)
+                        ,
+                        label: {
+                            ZStack(alignment: .center) {
+                                        Color.green
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                                        VStack(alignment: .center) {
+                                            Image("Croissant")
+                                                .resizable()
+                                                .frame(width:200, height: 200)
+                                                .aspectRatio(contentMode: .fit)
+                                                .padding()
+                                                
+                                            
+                                            Text("Croissant")
+                                                .font(.title)
+                                                
+                                                .padding(.init(top: 0, leading: 10, bottom: 20, trailing: 0))
+                                        }
+                                    }
+                            .padding(20)
+
+                    })
+                        .foregroundColor(.white)
+                    
+                    ZStack(alignment: .center) {
+                               Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
+                        VStack{
+                            
+                            galleryview2(myProjects: myProjects)
+                                
+                                
+//                                                .frame(width: 400, height: 500, alignment: .center)
+//                                                .padding()
+                        }
+                        .aspectRatio( contentMode: .fit)
+//                                    
+                        //}
+        
                     }
-                    .foregroundColor(.white)
+                    .padding(20)
+    
                         
     
                 }//:scroll

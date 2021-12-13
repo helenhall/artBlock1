@@ -14,16 +14,31 @@ struct AddNoteView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     @StateObject var vm = CoreDataViewModel()
     @State var showingPopover = false
+    var name: String
 
     
     var body: some View {
+       
             VStack {
-                Text("Add New Note Here")
-                TextField("Add New Note Here....", text: $textFieldText)
-//                    .padding(.horizontal)
-//                    .frame(height:55)
+                VStack{
+                    Image(name)
+                        .resizable()
+                        .frame(width:125, height: 170)
+                        .aspectRatio(contentMode: .fit)
+
+                        
+                Text("Add Progress for \(name) here")
+                    .padding(3)
+                TextField("Add New Progress Here....", text: $textFieldText)
+                    .padding(20)
+//
                     .background(Color.white)
-                    .cornerRadius(10)
+                    .border(.gray, width: 2)
+                    .frame(height:90)
+                    .foregroundColor(.black)
+//                    .cornerRadius(10)
+                }
+                .padding(.init(top: 20, leading: 20, bottom: 10, trailing: 20))
                 
                 
                 //action: saveButtonPressed
@@ -39,40 +54,36 @@ struct AddNoteView: View {
                     Text("Save".uppercased())
                         .foregroundColor(.white)
                         .font(.headline)
-                        .frame(height:55)
+                        .frame(height:40)
                         .frame(maxWidth:.infinity)
                         .background(Color.accentColor)
                         .cornerRadius(10)
+                        .padding(.init(top: -16, leading: 15, bottom: 0, trailing: 15))
                 })
                 List {
                     ForEach(vm.savedEntities) { entity in
                         Text(entity.name ?? "No name")
 
                 }
+                    .onDelete(perform: {indexSet in
+                        vm.savedEntities.remove(atOffsets: indexSet)
+//                        vm.saveData()
+                    })
+                    
             }
 //            .padding(14)
-            
+//                func removeProgress(at offsets: IndexSet) {
+//                    for index in offsets {
+//                        let note = vm.savedEntities[index]
+//                            vm.delete(note)
+//                        }
+//                }
         }
         
 //
         
-        .toolbar {
-            ToolbarItemGroup(placement:.navigationBarTrailing) {
-               EditButton()
-            }
-            ToolbarItemGroup(placement: .bottomBar) {
-                Image(systemName:"folder.badge.plus" )
-                    .onTapGesture {
-                        showingPopover.toggle()
-                    }
-                Spacer()
-                HStack {
-                    Text("")
-//                    NavigationLink(destination: AddNoteView()){
-                Image(systemName: "square.and.pencil")
-                }
-                }
-            }//:Toolbar
+//        
+//            }//:Toolbar
         }//:VSTack
 //    if showingPopover {
 //        CreateNewIdea($showingPopover)
@@ -80,17 +91,15 @@ struct AddNoteView: View {
     
 }
 
+
     
-//    func saveButtonPressed() {
-//        listViewModel.addNote(title: textFieldText)
-//        presentationMode.wrappedValue.dismiss()
-//    }
+
 
 
 struct AddNoteView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddNoteView()
+            AddNoteView(name: "Example Project")
         }
         .environmentObject(ListViewModel())
     }

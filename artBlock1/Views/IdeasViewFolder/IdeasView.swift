@@ -16,7 +16,7 @@ struct IdeasView: View {
     @ObservedObject var input = UserPick()
     let exampleColor : Color = Color(red: 0.13333333333333333, green: 0.4470588235294118, blue: 0.8509803921568627)
     @ObservedObject var myNotes: MyNotes
-    @State var searchString: String = ""
+//    @State var searchString: String = ""
     @State var newFolderName = ""
     @State var showingPopover = false
     
@@ -32,17 +32,19 @@ struct IdeasView: View {
                     .shadow(color:Color.black.opacity(0.05), radius: 5, x:0, y:5)
                 NavigationView{
                     List {
-                        TextField("Search", text: $searchString)
+//                        TextField("Search", text: $searchString)
                         Section(header:
                                     Text("On My iPhone")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .frame(alignment:.leading)
                                     .foregroundColor(.black)) {
-                            if myNotes.folders.count > 0 {
-                                FolderCell(name:"All on My iPhone", myNotes: myNotes)
-                            }
-                            FolderCell(name: "Notes", myNotes: myNotes)
+//                            if myNotes.folders.count > 0 {
+//                                FolderCell(name:"All on My iPhone", myNotes: myNotes)
+//                            }
+                            FolderCell(name: "Project 1", myNotes: myNotes)
+                            FolderCell(name: "Project 2", myNotes: myNotes)
+                            FolderCell(name: "Miscellaneous", myNotes: myNotes)
                             ForEach (myNotes.folders) { folder in
                                 FolderCell(name: folder.name, myNotes: myNotes)
                             }
@@ -59,23 +61,14 @@ struct IdeasView: View {
                     .navigationTitle("Idea Folders")
                     
                     .toolbar {
-//                        ToolbarItemGroup(placement:.navigationBarTrailing) {
-//                           EditButton()
-//                        }
+//
                         ToolbarItemGroup(placement: .bottomBar) {
-                            Image(systemName:"folder.badge.plus" )
+                            Image(systemName:"doc.badge.plus" )
                                 .onTapGesture {
                                     showingPopover.toggle()
                                 }
                             Spacer()
-                            HStack {
-                                Text("")
-                                NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: input.currentFolder)
-                                                .navigationBarHidden(true)
-                                                .navigationBarTitle("jj")){
-                            Image(systemName: "square.and.pencil")
-                            }
-                            }
+//
                         }
                     }//:TOOLBAR
                 }//:Navigationview
@@ -100,14 +93,14 @@ struct FolderCell: View {
     
     var body: some View {
         //destination: FolderView(folderName: name)
-        NavigationLink(destination: InsideFolderView(myNotes: myNotes, input: input.currentFolder)
-                        .navigationTitle("jfhjjjj")
+        NavigationLink(destination: IdeasView2(projectName: name)
+                        .navigationTitle(name)
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(false)
 //                        .navigationBarBackButtonHidden(false)
                         ){
         HStack {
-            Image(systemName: "folder")
+            Image(systemName: "doc.text")
             Text(name)
         }
         }.simultaneousGesture(TapGesture().onEnded{
@@ -133,9 +126,9 @@ struct CreateNewFolder: View {
                     .fill(Color(.systemGray4))
                     .frame(width:geo.size.width * 0.70, height: geo.size.width * 0.40, alignment:.center)
                 VStack{
-                    Text("New Folder")
+                    Text("New Project")
                         .font(.headline)
-                    Text("Enter a name for this folder")
+                    Text("Enter a name for this project")
                         .font(.subheadline)
                     Spacer()
                     TextField("Name",text:$newFolderName)
@@ -146,7 +139,7 @@ struct CreateNewFolder: View {
                     Spacer()
                     Color.gray.frame(width:200, height:CGFloat(1))
                     HStack{
-                        Button(action: {print("Cancel")}) {
+                        Button(action: {showingPopover.toggle()}) {
                             Text("Cancel")
                                 .frame(maxWidth:.infinity)
                         }
